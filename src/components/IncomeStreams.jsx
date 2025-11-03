@@ -1,4 +1,5 @@
-import { Coins, Clock, Users, LineChart, Shield } from 'lucide-react';
+import { Users, LineChart, Shield, Clock } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const cards = [
   {
@@ -60,9 +61,21 @@ export default function IncomeStreams() {
           </p>
         </div>
 
-        <div className="mt-10 grid gap-6 sm:gap-8 grid-cols-1 md:grid-cols-2 xl:grid-cols-4">
+        <motion.div
+          className="mt-10 grid gap-6 sm:gap-8 grid-cols-1 md:grid-cols-2 xl:grid-cols-4"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.08 } } }}
+        >
           {cards.map((c) => (
-            <div key={c.title} className="rounded-2xl bg-white/5 border border-white/10 p-6 hover:bg-white/7.5 transition group">
+            <motion.div
+              key={c.title}
+              className="rounded-2xl bg-white/5 border border-white/10 p-6 hover:bg-white/10 transition group"
+              initial={{ opacity: 0, y: 16 }}
+              variants={{ visible: { opacity: 1, y: 0 } }}
+              whileHover={{ y: -4 }}
+            >
               <div className={`h-12 w-12 rounded-xl bg-gradient-to-br ${c.accent} flex items-center justify-center shadow`}> 
                 <c.icon className="h-6 w-6 text-white" />
               </div>
@@ -76,9 +89,9 @@ export default function IncomeStreams() {
                   </li>
                 ))}
               </ul>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

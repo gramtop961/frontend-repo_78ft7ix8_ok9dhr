@@ -1,6 +1,7 @@
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import IncomeStreams from './components/IncomeStreams';
+import PriceChart from './components/PriceChart';
 import TrustStats from './components/TrustStats';
 
 function App() {
@@ -9,6 +10,7 @@ function App() {
       <Navbar />
       <main>
         <Hero />
+        <PriceChart />
         <IncomeStreams />
         <TrustStats />
         <footer className="border-t border-white/10 bg-[#141827]">
